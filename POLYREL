@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+#define  ll long long
+#define mp make_pair
+#define pll pair<ll,ll>
+#define pb push_back
+#define vl vector<ll>
+#define vs vector<string>
+#define vd vector<double>
+#define all(v) v.begin(),v.end()
+#define vpll vector<pll>
+#define foreach(x,s) for(_typeof(s.begin()) x=s.begin();x!=s.end();x++)
+#define vi vector<int>
+#define maxn 200005
+#define fast  ios_base::sync_with_stdio(false); cin.tie(NULL);cout.tie(NULL);
+#define db double
+#define fi first
+#define se second
+
+#define PI 3.14159265
+using namespace std;
+
+
+
+int main()
+{
+
+  fast;
+  ll t,i,j,k,T,n;
+  cin>>T;
+  for(t=1;t<=T;t++)
+  {
+        ll n,w=0;
+            cin>>n>>k;
+            string s;
+            cin>>s;
+            ll one=0,z=0;
+            for(auto it:s)
+            {
+              if(it=='0')
+                z++;
+              else one++;
+            }
+
+       ll    c=n/k;
+          if(z%c || one%c)
+          {
+              cout<<"IMPOSSIBLE"<<endl;
+              continue;
+          }
+          string ans="";
+          int side=0;
+          j=0;
+          while(j<n){
+                if(side){
+          for(i=j;i<j+one/c;i++)
+            ans=ans+'1';
+          for(;i<j+k;i++)
+         ans=ans+'0';
+                }
+                else{
+                    for(i=j;i<j+z/c;i++)
+                    {
+                    ans=ans+'0';
+                    }
+                    for(;i<j+k;i++)
+                        ans=ans+'1';
+                }
+                j+=k;
+                side^=1;
+          }
+          cout<<ans<<endl;
+     }
+
+
+
+
+return 0;
+}
